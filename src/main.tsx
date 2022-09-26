@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { routes } from "./routes/Routes";
 import "antd/dist/antd.css";
-import "./styles.scss";
 
 import { RouterProvider } from "react-router-dom";
 
