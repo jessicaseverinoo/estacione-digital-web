@@ -1,1 +1,29 @@
 .listVehicles {}
+
+.form-list-vehicle {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-list-vehicle table {
+      background: #F9F9F9;
+}
+
+.form-edit-vehicle {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
+
+ 
+}
+
+.form-edit-vehicle button{
+    background: #34437A;
+    
+
+}
+
