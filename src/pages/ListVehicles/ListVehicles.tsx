@@ -61,7 +61,13 @@ const ListVehicles: React.FC = () => {
             dataIndex: 'favorito',
             key: 'favorito',
             render: (_, { favorito }) => (
-                favorito === 'true' ? <StarFilled style={{ color: '#FFE142' }} /> : <StarOutlined />
+                favorito === 'true' ? <img               
+                src="../src/assets/icons/star.svg"
+                alt="Favorito"
+            /> : <img
+                    src="../src/assets/icons/star.svg"
+                    alt="Favorito"
+                />
             ),
         },
         {
@@ -69,8 +75,14 @@ const ListVehicles: React.FC = () => {
             key: 'action',
             render: (_, record) => (
                 <Space size="middle">
-                    <EditFilled style={{ color: '#555555' }} />
-                    <DeleteFilled style={{ color: '#EB4444' }} />
+                   <img
+                    src="../src/assets/icons/edit.svg"
+                    alt="Editar"
+                />
+                    <img
+                    src="../src/assets/icons/delete.svg"
+                    alt="Deletar"
+                />
                 </Space>
             ),
         },
