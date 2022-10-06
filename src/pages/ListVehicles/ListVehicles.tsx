@@ -1,15 +1,10 @@
 import { DeleteFilled, DeleteOutlined, EditFilled, EditOutlined, StarFilled, StarOutlined, StarTwoTone } from "@ant-design/icons";
-import { Button, Checkbox, Col, Divider, Form, Input, Row, Image, Table, Space, Tag, Switch, Radio } from "antd";
+import { Button, Checkbox, Col, Divider, Form, Input, Row, Image, Table, Space, Tag, Switch, Radio, Popconfirm } from "antd";
 import type { ColumnsType } from 'antd/es/table';
 import Layout from "antd/lib/layout/layout";
 
 import React from "react";
 import './ListVehicles.scss';
-
-
-
-
-
 
 const ListVehicles: React.FC = () => {
     const onFinish = (values: any) => {
@@ -21,7 +16,11 @@ const ListVehicles: React.FC = () => {
     };
 
     const onChangeFavorito = (checked: boolean) => {
-        console.log(`switch to ${checked}`);
+        console.log(`Switch to ${checked}`);
+    };
+
+    const handleDelete = (stid: any) => {
+        console.log(stid);
     };
 
 
@@ -38,16 +37,11 @@ const ListVehicles: React.FC = () => {
             dataIndex: 'tipoVeiculo',
             key: 'tipoVeiculo',
             render: (_, { tipoVeiculo }) => (
-
-                tipoVeiculo === 'carro' ? <img
-                    width="30%"
-                    src="../src/assets/icons/vehicle.svg"
-                    alt="Carro"
-                /> : <img
-                    width="30%"
-                    src="../src/assets/icons/truck.svg"
-                    alt="Caminhão"
-                />
+                tipoVeiculo === 'carro' ?
+                    <img className="icon-table" src="/src/assets/icons/vehicle.svg" alt="Carro" />
+                    :
+                    <img className="icon-table" src="/src/assets/icons/truck.svg" alt="Caminhão"
+                    />
             ),
 
         },
@@ -61,13 +55,11 @@ const ListVehicles: React.FC = () => {
             dataIndex: 'favorito',
             key: 'favorito',
             render: (_, { favorito }) => (
-                favorito === 'true' ? <img               
-                src="../src/assets/icons/star.svg"
-                alt="Favorito"
-            /> : <img
-                    src="../src/assets/icons/star.svg"
-                    alt="Favorito"
-                />
+                favorito === 'true' ?
+                    <img className="icon-table" src="/src/assets/icons/star.svg" alt="Favorito" />
+                    :
+                    <img className="icon-table" src="/src/assets/icons/star.svg" alt="Favorito"
+                    />
             ),
         },
         {
@@ -75,14 +67,10 @@ const ListVehicles: React.FC = () => {
             key: 'action',
             render: (_, record) => (
                 <Space size="middle">
-                   <img
-                    src="../src/assets/icons/edit.svg"
-                    alt="Editar"
-                />
-                    <img
-                    src="../src/assets/icons/delete.svg"
-                    alt="Deletar"
-                />
+                    <img className="icon-table" src="/src/assets/icons/edit.svg" alt="Editar" />
+                    <Popconfirm title="Tem certeza de que deseja deletar?" okText="Sim" cancelText="Cancelar" onConfirm={() => handleDelete(record.key)}>
+                        <img className="icon-table" src="/src/assets/icons/delete.svg" alt="Deletar" />
+                    </Popconfirm>
                 </Space>
             ),
         },
@@ -167,7 +155,7 @@ const ListVehicles: React.FC = () => {
                             >
                                 <Input />
                             </Form.Item>
-                            <Form.Item
+                            <Form.Item className="switch"
                                 label="Favorito"
                                 name="favorito"
                             >
@@ -176,29 +164,24 @@ const ListVehicles: React.FC = () => {
 
                             <Form.Item label="Tipo do veículo"  >
                                 <Radio.Group >
-                                    <Radio.Button value="carro" ><img
-                                        width="30%"
-                                        src="../src/assets/icons/vehicle.svg"
-                                        alt="Carro"
-                                    /></Radio.Button>
-                                    <Radio.Button value="caminhao" ><img
-                                        width="60%"
-                                        src="../src/assets/icons/truck.svg"
-                                        alt="Caminhão"
-                                    /></Radio.Button>
-                                    <Radio.Button value="onibus" ><img
-                                        width="60%"
-                                        src="../src/assets/icons/buss.svg"
-                                        alt="Onibus"
-                                    /></Radio.Button>
+                                    <Radio.Button value="carro">
+                                        <img className="icon-radio-button" src="/src/assets/icons/vehicle.svg" alt="Carro" />
+                                    </Radio.Button>
+                                    <Radio.Button value="caminhao">
+                                        <img className="icon-radio-button" src="/src/assets/icons/truck.svg" alt="Caminhão" />
+                                    </Radio.Button>
+                                    <Radio.Button value="onibus">
+                                        <img className="icon-radio-button" src="/src/assets/icons/buss.svg" alt="Onibus" />
+                                    </Radio.Button>
                                 </Radio.Group>
                             </Form.Item>
-
-                            <Form.Item wrapperCol={{ span: 24 }}>
-                                <Button type="primary" htmlType="submit">
-                                    Adicionar Veículo
-                                </Button>
-                            </Form.Item>
+                            <div className="button">
+                                <Form.Item  >
+                                    <Button type="primary" htmlType="submit" >
+                                        Adicionar Veículo
+                                    </Button>
+                                </Form.Item>
+                            </div>
                         </Form>
 
                     </div>

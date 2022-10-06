@@ -1,29 +1,36 @@
 .listVehicles {}
 
 .form-list-vehicle {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+.icon-table {
+    width: 30px;
+    height: 30px;
+}
+
+.icon-radio-button {
+    width: 30px;
+    height: 30px;
 }
 
 .form-list-vehicle table {
-      background: #F9F9F9;
+    background: #F9F9F9;
 }
 
 .form-edit-vehicle {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-  
-
- 
 }
 
-.form-edit-vehicle button{
-    background: #34437A;
-    
-
+.button {
+    justify-content: center;
+    display: flex;
 }
 
+.switch {
+    display: flex;
+}
