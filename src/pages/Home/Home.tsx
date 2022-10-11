@@ -1,96 +1,17 @@
 import "./Home.scss";
-import { Link } from "react-router-dom";
-import { ROUTES } from "../../constants/Constants";
 
-import {
-  MenuOutlined,
-  HomeOutlined,
-  HistoryOutlined,
-  WalletOutlined,
-  CarOutlined,
-  UserOutlined,
-  HourglassOutlined,
-} from "@ant-design/icons";
-import { Divider, DrawerProps, Menu, RadioChangeEvent } from "antd";
-import { Col, Layout, Row, Button, Drawer } from "antd";
-import { Avatar } from "antd";
-import React, { useState } from "react";
+import { HourglassOutlined } from "@ant-design/icons";
+import { Divider } from "antd";
+import { Col, Layout, Row } from "antd";
+import HeaderTop from "../../components/HeaderTop/HeaderTop";
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 const Home: React.FC = () => {
-  const [open, setOpen] = useState(false);
-  const [placement, setPlacement] = useState<DrawerProps["placement"]>("left");
-
-  const showDrawer = () => {
-    setOpen(true);
-  };
-
-  const onClose = () => {
-    setOpen(false);
-  };
-
-  const onChange = (e: RadioChangeEvent) => {
-    setPlacement(e.target.value);
-  };
-
   return (
     <Layout className="home">
       <Layout className="site-layout">
-        <Header className="header">
-          <Row justify="space-between">
-            <Col>
-              <Button type="text" onClick={showDrawer}>
-                <MenuOutlined style={{ color: "#ffffff" }} />
-              </Button>
-              <Drawer
-                title=""
-                placement={placement}
-                closable={false}
-                onClose={onClose}
-                open={open}
-                key={placement}
-              >
-                <Menu
-                  defaultSelectedKeys={["1"]}
-                  items={[
-                    {
-                      key: "1",
-                      icon: <HomeOutlined />,
-                      label: "Início",
-                    },
-                    {
-                      key: "2",
-                      icon: <HistoryOutlined />,
-                      label: "Histórico",
-                    },
-                    {
-                      key: "3",
-                      icon: <WalletOutlined />,
-                      label: "Carteira",
-                    },
-                    {
-                      key: "4",
-                      icon: <CarOutlined />,
-                      label: "Veículos",
-                    },
-                    {
-                      key: "5",
-                      icon: <UserOutlined />,
-                      label: "Perfil",
-                    },
-                  ]}
-                />
-              </Drawer>
-            </Col>
-            <Col>
-              <Row align="middle">
-                <p className="wellcome-user">Olá, Jessica</p>
-                <Avatar shape="square" size="large" icon={<UserOutlined />} />
-              </Row>
-            </Col>
-          </Row>
-        </Header>
+        <HeaderTop />
         <Content
           className="site-layout-background"
           style={{
