@@ -1,1 +1,36 @@
 .listVehicles {}
+
+.form-list-vehicle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.icon-table {
+    width: 30px;
+    height: 30px;
+}
+
+.icon-radio-button {
+    width: 30px;
+    height: 30px;
+}
+
+.form-list-vehicle table {
+    background: #F9F9F9;
+}
+
+.form-edit-vehicle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.button {
+    justify-content: center;
+    display: flex;
+}
+
+.switch {
+    display: flex;
+}
