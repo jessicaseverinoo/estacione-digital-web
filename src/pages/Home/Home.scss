@@ -1,1 +1,26 @@
-.home {}
+.home {
+  min-height: 100vh;
+  height: 100vh;
+}
+
+.wellcome-user {
+  margin-right: 24px;
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+.content_available-hours {
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #585666;
+  padding: 32px;
+  border-radius: 8px;
+}
+
+.text_available-hours {
+  color: #ffffff;
+  margin-bottom: 0;
+}
