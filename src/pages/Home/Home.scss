@@ -5,27 +5,13 @@
   height: 100vh;
 }
 
-.content-available-hours {
-  margin: auto auto 32px;
+.main-content {
+  margin: 24px 16px;
+  padding: 24px;
 }
 
 .content-cards {
   margin: auto auto 32px;
-}
-
-.content_available-hours {
-  max-width: 420px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #585666;
-  padding: 32px;
-  border-radius: 8px;
-}
-
-.text_available-hours {
-  color: #ffffff;
-  margin-bottom: 0;
 }
 
 .card-hour-open {
