@@ -1,21 +1,82 @@
-import './Login.scss'
-import { Link } from 'react-router-dom';
-import { ROUTES } from '../../constants/Constants';
+import { Button, Checkbox, Col, Divider, Form, Input, Row, Image } from "antd";
+import Layout from "antd/lib/layout/layout";
+import React from "react";
+import "./Login.scss";
 
-function Login() {
-    return (
-        <main className='login'>
-            <p>Page Login</p>
-            <Link to={ROUTES.LOGIN}>Login</Link>
-            <Link to={ROUTES.HOME}>Início</Link>
-            <Link to={ROUTES.PROFILE}>Perfil</Link>
-            <Link to={ROUTES.VEHICLE.LIST}>Lista de Veículos</Link>
-            <Link to={ROUTES.VEHICLE.EDIT}>Editar Veículo</Link>
-            <Link to={ROUTES.VEHICLE.NEW}>Novo Veículo</Link>
-            <Link to={ROUTES.WALLET}>Carteira</Link>
-            <Link to={ROUTES.HISTORY}>Histórico</Link>
-        </main>
-    )
-}
+const Login: React.FC = () => {
+  const onFinish = (values: any) => {
+    console.log("Success:", values);
+  };
 
-export default Login
+  const onFinishFailed = (errorInfo: any) => {
+    console.log("Failed:", errorInfo);
+  };
+
+  return (
+    <Layout style={{ minHeight: "100vh", backgroundColor: "#FFFFFF" }}>
+      <Row justify="center" align="middle">
+        <Col span={7}>
+          <div className="form-login">
+            <Form
+              name="basic"
+              layout="vertical"
+              labelCol={{ span: 24 }}
+              wrapperCol={{ span: 24 }}
+              initialValues={{ remember: true }}
+              onFinish={onFinish}
+              onFinishFailed={onFinishFailed}
+              autoComplete="off"
+            >
+              <Form.Item
+                label="CPF ou CNPJ"
+                name="cpfCnpj"
+                rules={[
+                  {
+                    required: true,
+                    message: "Por favor, insira seu CPF ou CNPJ",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+
+              <Form.Item
+                label="Senha"
+                name="password"
+                rules={[{ required: true, message: "Senha inválida" }]}
+              >
+                <Input.Password />
+              </Form.Item>
+
+              <Form.Item
+                name="remember"
+                valuePropName="checked"
+                wrapperCol={{ span: 24 }}
+              >
+                <Checkbox>Lembra-me</Checkbox>
+              </Form.Item>
+
+              <Form.Item wrapperCol={{ span: 24 }}>
+                <Button type="primary" htmlType="submit">
+                  Entrar
+                </Button>
+              </Form.Item>
+            </Form>
+          </div>
+        </Col>
+        <Col offset={1} span={1}>
+          <Divider type="vertical" style={{ height: "100vh" }} />
+        </Col>
+        <Col span={7}>
+          <img
+            width="100%"
+            src="src/assets/images/logo.jpg"
+            alt="Estacione Digital"
+          />
+        </Col>
+      </Row>
+    </Layout>
+  );
+};
+
+export default Login;
