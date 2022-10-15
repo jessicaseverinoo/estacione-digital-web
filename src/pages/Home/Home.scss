@@ -1,103 +1,138 @@
-.home {}
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700&display=swap');
-
-// CARD
-.card {
-    // box-sizing: border-box;
-    width: 565px;
-    height: 224px;
-    left: 120px;
-    top: 326px;
-    margin: 10px;
-    padding: 35px 30px;
-    border: 1px solid #279B9B;
-    border-radius: 5px;
-
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 24px;
-    line-height: 30px;
-    color: #6B6B6B;
+.home {
+  min-height: 100vh;
+  height: 100vh;
 }
 
-.card b {
-    font-weight: 900;
+.main-content {
+  margin: 24px 16px;
+  padding: 24px;
 }
 
-.card a {
-    color: #6B6B6B;
-    text-decoration: underline;
+//.content-cards {
+ // margin: auto auto 32px;
+//}
+
+.card-hour-open {
+  padding: 24px;
+  border: 1px solid #279b9b;
+  border-radius: 5px;
+  color: #6b6b6b;
+  min-width: 565px;
+  min-height: 200px;
+  margin-right: 32px;
+  margin: 10px;
 }
 
-.card h3 {
-    color: #279B9B;
-    font-weight: 900;
+.card-hour-open__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
 }
 
-.card-icon {
-    width: 30px;
-    height: 30px;
+.card-hour-open__content-title {
+  display: flex;
+  align-items: center;
 }
 
-.card-icon-action {
-    width: 21px;
-    height: 21px;
+.card-hour-open__title {
+  font-size: 18px;
+  color: #279b9b;
+  font-weight: 900;
+  margin-bottom: 0;
 }
 
-// CARD INFO
-#card-info {
-    border: 1px solid #FF9900;
-    display: block;
+.card-hour-open__icon:first-child {
+  margin-right: 12px;
 }
 
-#card-info h3 {
-    color: #FF9900;
-    font-weight: 900;
+.card-hour-open__icon {
+  width: 24px;
+  height: 24px;
 }
 
-#item-1 {
-    display: none;
+.card-info__icon-attention {
+  width: 24px;
+  height: 24px;
 }
 
-input:checked+.checkbox-wrapper {
-    display: none;
+.card-info__icon-close {
+  width: 18px;
+  height: 18px;
 }
 
-// CARD PERIODO
-#periodo {
-    color: #51575B;
-    font-weight: 900;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    margin: 0px;
-    position: relative;
-    align-items: center;
-    display: flex;
-    justify-content: space-around;
+.card-info {
+  min-width: 565px;
+  min-height: 200px;
+  padding: 24px;
+  border: 1px solid #ff9900;
+  border-radius: 5px;
+  color: #6b6b6b;
 }
 
-#periodo h1 {
-    font-size: 80px;
-    font-weight: 900;
-    line-height: 70px;
-    color: #51575B;
-    margin: 5px;
+.card-info__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
 }
 
-#periodo p {
-    line-height: 15px;
-    margin: 10px;
+.card-info__content_title {
+  display: flex;
+  align-items: center;
 }
 
+.card-info__content_title img {
+  margin-right: 12px;
+}
 
-.card-periodo-image {
-    width: 130px;
-    height: 130px;
-    display: flex;
-    float: left;
+.card-info__title {
+  margin-bottom: 0;
+  color: #ff9900;
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.card-info__text a {
+  margin-left: 4px;
+  color: #6b6b6b;
+  text-decoration: underline;
+}
+
+.card-time {
+  padding: 24px;
+  border: 1px solid #51575b;
+  border-radius: 8px;
+  color: #51575b;
+  font-weight: 900;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  width: 565px;
+  min-width: 565px;
+  min-height: 200px;
+  margin: 10px;
+}
+
+.card-time__time__hour {
+  font-size: 80px;
+  font-weight: 900;
+  line-height: 70px;
+  color: #51575b;
+  margin: 5px;
+}
+
+.card-time__time__text {
+  margin: 10px auto 0;
+}
+
+.card-time-image {
+  display: flex;
 }
 
 .button {
@@ -115,7 +150,8 @@ input:checked+.checkbox-wrapper {
 }
 
 #button-ticket {
-    width: 621px;
+    min-width: 370px;
+    max-width: 420px;
     height: 64px;
 }
 
@@ -225,4 +261,12 @@ input:checked+.checkbox-wrapper {
     box-shadow: none;
     background-color: #34437A;
     color: #FFFFFF;
+}
+
+#function-close {
+    display: none;
+}
+
+input:checked+.checkbox-wrapper {
+    display: none;
 }
