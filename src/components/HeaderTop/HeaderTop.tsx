@@ -57,25 +57,21 @@ const HeaderTop: React.FC = () => {
                   label: "Início",
                 },
                 {
+                  key: ROUTES.VEHICLE.LIST,
+                  icon: <CarOutlined />,
+                  label: "Veículos",
+                },
+                /*
+                                {
                   key: ROUTES.HISTORY,
                   icon: <HistoryOutlined />,
                   label: "Histórico",
                 },
                 {
-                  key: ROUTES.WALLET,
-                  icon: <WalletOutlined />,
-                  label: "Carteira",
-                },
-                {
-                  key: ROUTES.VEHICLE.LIST,
-                  icon: <CarOutlined />,
-                  label: "Veículos",
-                },
-                {
                   key: ROUTES.PROFILE,
                   icon: <UserOutlined />,
                   label: "Perfil",
-                },
+                },*/
               ]}
             />
           </Drawer>
