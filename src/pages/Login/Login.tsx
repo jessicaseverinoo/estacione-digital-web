@@ -1,17 +1,43 @@
 import { Button, Checkbox, Col, Divider, Form, Input, Row, Image } from "antd";
 import Layout from "antd/lib/layout/layout";
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { json, useNavigate } from "react-router-dom";
+import api from "../../services/api";
 import "./Login.scss";
 
 const Login: React.FC = () => {
+  const URL_LOGIN = "/login";
+  const navigate = useNavigate();
+
   const onFinish = (values: any) => {
     console.log("Success:", values);
+    try {
+      let body = {
+        cpfCnpj: values.cpfCnpj,
+        senha: values.password,
+      };
+      let response = api.post(URL_LOGIN, body);
+
+      console.log(response);
+    } catch (error) {}
   };
 
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
   };
+
+  useEffect(() => {
+    api
+      .post(URL_LOGIN)
+      .then((response) => {
+        if (response.data) {
+          navigate("/inicio");
+        }
+      })
+      .catch((error) => {
+        console.log(`Erro: ${error}`);
+      });
+  }, []);
 
   return (
     <Layout style={{ minHeight: "100vh", backgroundColor: "#FFFFFF" }}>
@@ -58,7 +84,9 @@ const Login: React.FC = () => {
               </Form.Item>
 
               <Form.Item wrapperCol={{ span: 24 }}>
-                <Link to="/inicio">Entrar</Link>
+                <Button type="primary" htmlType="submit">
+                  Entrar
+                </Button>
               </Form.Item>
             </Form>
           </div>
