@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { ROUTES } from "../../constants/Constants";
 
@@ -28,6 +28,8 @@ const HeaderTop: React.FC = () => {
     setOpen(false);
   };
 
+  const navigate = useNavigate();
+
   return (
     <Header className="header">
       <Row justify="space-between">
@@ -45,32 +47,36 @@ const HeaderTop: React.FC = () => {
           >
             <Menu
               defaultSelectedKeys={["1"]}
+              onClick={({ key }) => {
+                navigate(key);
+              }}
               items={[
                 {
-                  key: "1",
+                  key: ROUTES.HOME,
                   icon: <HomeOutlined />,
                   label: "Início",
                 },
                 {
-                  key: "2",
-                  icon: <HistoryOutlined />,
-                  label: "Histórico",
-                },
-                {
-                  key: "3",
-                  icon: <WalletOutlined />,
-                  label: "Carteira",
-                },
-                {
-                  key: "/veiculo/lista",
+                  key: ROUTES.VEHICLE.LIST,
                   icon: <CarOutlined />,
                   label: "Veículos",
                 },
                 {
-                  key: "5",
+                  key: ROUTES.LOGIN,
+                  icon: <CarOutlined />,
+                  label: "Sair",
+                },
+                /*
+                                {
+                  key: ROUTES.HISTORY,
+                  icon: <HistoryOutlined />,
+                  label: "Histórico",
+                },
+                {
+                  key: ROUTES.PROFILE,
                   icon: <UserOutlined />,
                   label: "Perfil",
-                },
+                },*/
               ]}
             />
           </Drawer>

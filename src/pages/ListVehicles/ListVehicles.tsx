@@ -36,32 +36,48 @@ const ListVehicles: React.FC = () => {
     console.log(stid);
   };
 
-  interface DataType {
+  interface IData {
     key: string;
     tipoVeiculo: string;
     placa: string;
     favorito: string;
   }
 
-  const columns: ColumnsType<DataType> = [
-    {
-      title: "Tipo Veículo",
-      dataIndex: "tipoVeiculo",
-      key: "tipoVeiculo",
-      render: (_, { tipoVeiculo }) =>
-        tipoVeiculo === "carro" ? (
+  function defineTypeImageVehicle(typeVehicle: string) {
+    switch (typeVehicle) {
+      case "CARRO":
+        return (
           <img
             className="icon-table"
             src="/src/assets/icons/vehicle.svg"
             alt="Carro"
           />
-        ) : (
+        );
+      case "CAMINHAO":
+        return (
           <img
             className="icon-table"
             src="/src/assets/icons/truck.svg"
             alt="Caminhão"
           />
-        ),
+        );
+      case "ONIBUS":
+        return (
+          <img
+            className="icon-table"
+            src="/src/assets/icons/buss.svg"
+            alt="Ônibus"
+          />
+        );
+    }
+  }
+
+  const columns: ColumnsType<IData> = [
+    {
+      title: "Tipo Veículo",
+      dataIndex: "tipoVeiculo",
+      key: "tipoVeiculo",
+      render: (_, { tipoVeiculo }) => defineTypeImageVehicle(tipoVeiculo),
     },
     {
       title: "Placa",
@@ -114,31 +130,31 @@ const ListVehicles: React.FC = () => {
     },
   ];
 
-  const data: DataType[] = [
+  const data: IData[] = [
     {
       key: "1",
-      tipoVeiculo: "carro",
+      tipoVeiculo: "CARRO",
       placa: "GGG-4444",
       favorito: "true",
     },
     {
       key: "2",
-      tipoVeiculo: "caminhao",
+      tipoVeiculo: "CAMINHAO",
       placa: "AAA-4444",
       favorito: "false",
     },
     {
-        key: "3",
-        tipoVeiculo: "onibus",
-        placa: "AAA-4444",
-        favorito: "false",
-      },
-      {
-        key: "4",
-        tipoVeiculo: "carro",
-        placa: "AAA-4444",
-        favorito: "false",
-      },
+      key: "3",
+      tipoVeiculo: "ONIBUS",
+      placa: "AAA-4444",
+      favorito: "false",
+    },
+    {
+      key: "4",
+      tipoVeiculo: "CARRO",
+      placa: "AAA-4444",
+      favorito: "false",
+    },
   ];
 
   return (
@@ -224,21 +240,21 @@ const ListVehicles: React.FC = () => {
 
                   <Form.Item label="Tipo do veículo">
                     <Radio.Group>
-                      <Radio.Button value="carro">
+                      <Radio.Button className="type-vehicle" value="carro">
                         <img
                           className="icon-radio-button"
                           src="/src/assets/icons/vehicle.svg"
                           alt="Carro"
                         />
                       </Radio.Button>
-                      <Radio.Button value="caminhao">
+                      <Radio.Button className="type-vehicle" value="caminhao">
                         <img
                           className="icon-radio-button"
                           src="/src/assets/icons/truck.svg"
                           alt="Caminhão"
                         />
                       </Radio.Button>
-                      <Radio.Button value="onibus">
+                      <Radio.Button className="type-vehicle" value="onibus">
                         <img
                           className="icon-radio-button"
                           src="/src/assets/icons/buss.svg"
@@ -249,7 +265,7 @@ const ListVehicles: React.FC = () => {
                   </Form.Item>
 
                   <Form.Item>
-                    <Button type="primary" block htmlType="submit">
+                    <Button type="primary" size="large" block htmlType="submit">
                       Adicionar Veículo
                     </Button>
                   </Form.Item>
