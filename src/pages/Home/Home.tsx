@@ -1,10 +1,9 @@
-import "./Home.scss";
+import { Divider, Col, Layout, Row } from "antd";
 
-import { HourglassOutlined } from "@ant-design/icons";
-import { Divider } from "antd";
-import { Col, Layout, Row } from "antd";
 import HeaderTop from "../../components/HeaderTop/HeaderTop";
 import AvailableHours from "../../components/AvailableHours/AvailableHours";
+
+import "./Home.scss";
 
 const { Content } = Layout;
 

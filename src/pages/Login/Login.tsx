@@ -1,43 +1,37 @@
-import { Button, Checkbox, Col, Divider, Form, Input, Row, Image } from "antd";
+import { Button, Checkbox, Col, Divider, Form, Input, Row } from "antd";
 import Layout from "antd/lib/layout/layout";
-import React, { useEffect } from "react";
-import { json, useNavigate } from "react-router-dom";
-import api from "../../services/api";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import "./Login.scss";
+import AuthService from "../../services/AuthService";
 
 const Login: React.FC = () => {
   const URL_LOGIN = "/login";
   const navigate = useNavigate();
 
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
-    try {
-      let body = {
-        cpfCnpj: values.cpfCnpj,
-        senha: values.password,
-      };
-      let response = api.post(URL_LOGIN, body);
+  const [isLoading, setIsLoading] = useState(false);
 
-      console.log(response);
-    } catch (error) {}
-  };
-
-  const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
-  };
-
-  useEffect(() => {
-    api
-      .post(URL_LOGIN)
-      .then((response) => {
-        if (response.data) {
+  const onSubmit = (valuesForm: any) => {
+    setIsLoading(true);
+    AuthService.login(valuesForm.cpfCnpj, valuesForm.password)
+      .then(
+        () => {
           navigate("/inicio");
+          window.location.reload;
+        },
+        (error) => {
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+          setIsLoading(false);
         }
-      })
-      .catch((error) => {
-        console.log(`Erro: ${error}`);
-      });
-  }, []);
+      )
+      .finally(() => setIsLoading(false));
+  };
 
   return (
     <Layout style={{ minHeight: "100vh", backgroundColor: "#FFFFFF" }}>
@@ -50,8 +44,7 @@ const Login: React.FC = () => {
               labelCol={{ span: 24 }}
               wrapperCol={{ span: 24 }}
               initialValues={{ remember: true }}
-              onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
+              onFinish={onSubmit}
               autoComplete="off"
             >
               <Form.Item
@@ -84,7 +77,7 @@ const Login: React.FC = () => {
               </Form.Item>
 
               <Form.Item wrapperCol={{ span: 24 }}>
-                <Button type="primary" htmlType="submit">
+                <Button type="primary" htmlType="submit" disabled={isLoading}>
                   Entrar
                 </Button>
               </Form.Item>
