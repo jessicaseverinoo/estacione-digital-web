@@ -61,6 +61,11 @@ const HeaderTop: React.FC = () => {
                   icon: <CarOutlined />,
                   label: "Veículos",
                 },
+                {
+                  key: ROUTES.LOGIN,
+                  icon: <CarOutlined />,
+                  label: "Sair",
+                },
                 /*
                                 {
                   key: ROUTES.HISTORY,
