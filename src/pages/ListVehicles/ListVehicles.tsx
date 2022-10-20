@@ -10,18 +10,66 @@ import {
   Switch,
   Radio,
   Popconfirm,
+  RadioChangeEvent,
 } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import Layout, { Content } from "antd/lib/layout/layout";
 import HeaderTop from "../../components/HeaderTop/HeaderTop";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ListVehicles.scss";
 import AvailableHours from "../../components/AvailableHours/AvailableHours";
+import VehicleService from "../../services/VehicleService";
+import AuthService from "../../services/AuthService";
 
 const ListVehicles: React.FC = () => {
+  const [listVehicle, setlistVehicle] = useState([]);
+  
+  useEffect(() => {
+    VehicleService.listVehicle(AuthService.getCurrentUser().uuidUsuario).then(
+      (response) => {
+        setlistVehicle(response);
+      },
+      (error) => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+        console.log(resMessage);
+      }
+    );
+  }, []);
+
   const onFinish = (values: any) => {
-    console.log("Success:", values);
+    console.log("valores recebidos:", values);
+    VehicleService.addVehicle(
+      AuthService.getCurrentUser().uuidUsuario,
+      values.placa,
+      "CARRO",
+      values.modelo,
+      false
+    ).then(
+      (response) => {
+        console.log("Success:", values);
+      },
+      (error) => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+        console.log(resMessage);
+      }
+    );
+  };
+
+  
+  const onChangeTipoVeiculo = (e: RadioChangeEvent) => {
+    console.log('radio checked', e.target.value);
+   
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -37,7 +85,7 @@ const ListVehicles: React.FC = () => {
   };
 
   interface IData {
-    key: string;
+    uuidVeiculo: string;
     tipoVeiculo: string;
     placa: string;
     favorito: string;
@@ -117,7 +165,7 @@ const ListVehicles: React.FC = () => {
             title="Tem certeza de que deseja deletar?"
             okText="Sim"
             cancelText="Cancelar"
-            onConfirm={() => handleDelete(record.key)}
+            onConfirm={() => handleDelete(record.uuidVeiculo)}
           >
             <img
               className="icon-table"
@@ -130,32 +178,7 @@ const ListVehicles: React.FC = () => {
     },
   ];
 
-  const data: IData[] = [
-    {
-      key: "1",
-      tipoVeiculo: "CARRO",
-      placa: "GGG-4444",
-      favorito: "true",
-    },
-    {
-      key: "2",
-      tipoVeiculo: "CAMINHAO",
-      placa: "AAA-4444",
-      favorito: "false",
-    },
-    {
-      key: "3",
-      tipoVeiculo: "ONIBUS",
-      placa: "AAA-4444",
-      favorito: "false",
-    },
-    {
-      key: "4",
-      tipoVeiculo: "CARRO",
-      placa: "AAA-4444",
-      favorito: "false",
-    },
-  ];
+  const data: IData[] = listVehicle;
 
   return (
     <div className="listVehicles">
@@ -238,23 +261,31 @@ const ListVehicles: React.FC = () => {
                     <Switch onChange={onChangeFavorito} />
                   </Form.Item>
 
-                  <Form.Item label="Tipo do veículo">
-                    <Radio.Group>
-                      <Radio.Button className="type-vehicle" value="carro">
+                  <Form.Item
+                    label="Tipo do veículo"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Por favor, selecione o tipo do veículo",
+                      },
+                    ]}
+                  >
+                    <Radio.Group defaultValue={"CARRO"} onChange={onChangeTipoVeiculo} > 
+                      <Radio.Button className="type-vehicle" value="CARRO" >
                         <img
                           className="icon-radio-button"
                           src="/src/assets/icons/vehicle.svg"
                           alt="Carro"
                         />
                       </Radio.Button>
-                      <Radio.Button className="type-vehicle" value="caminhao">
+                      <Radio.Button className="type-vehicle" value="CAMINHAO">
                         <img
                           className="icon-radio-button"
                           src="/src/assets/icons/truck.svg"
                           alt="Caminhão"
                         />
                       </Radio.Button>
-                      <Radio.Button className="type-vehicle" value="onibus">
+                      <Radio.Button className="type-vehicle" value="ONIBUS">
                         <img
                           className="icon-radio-button"
                           src="/src/assets/icons/buss.svg"
