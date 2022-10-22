@@ -10,9 +10,9 @@
   padding: 24px;
 }
 
-//.content-cards {
- // margin: auto auto 32px;
-//}
+.content-cards {
+  margin: auto auto 32px;
+}
 
 .card-hour-open {
   padding: 24px;
@@ -135,138 +135,94 @@
   display: flex;
 }
 
-.button {
-    margin: 10px;
-    border-radius: 8px;
-    border-color: #34437A;
-    background-color: #34437A;
-
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 22px;
-    line-height: 20px;
-    color: #FFFFFF;
-}
-
-#button-ticket {
-    min-width: 370px;
-    max-width: 420px;
-    height: 64px;
-}
-
 #div-confirmar {
-    width: 100%;
-    //max-width: 350px;
+  width: 100%;
 }
 
 #button-confirmar {
-    position: relative;
-    width: 100%;
-    height: 64px;
+  position: relative;
+  width: 100%;
+  height: 64px;
 }
 
 .modal {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 99999;
-    opacity: 0;
-    -webkit-transition: opacity 400ms ease-in;
-    -moz-transition: opacity 400ms ease-in;
-    transition: opacity 400ms ease-in;
-    pointer-events: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 99999;
+  opacity: 0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
 }
 
 .modal:target {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.modal>div {
-    position: relative;
-    width: 60%;
-    min-width: 420px;
-    max-width: 800px;
-    height: auto;
-    padding: 35px 30px;
-    margin-top: 3%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 5%;
-
-    background: #FFFFFF;
-    border-radius: 8px;
-
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 24px;
-    line-height: 30px;
-    color: #6B6B6B;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .div-modal {
-    width: 350px;
-    height: auto;
-    margin: 5px;
+  width: 350px;
+  height: auto;
+  margin: 5px;
 }
 
 .div-modal select {
-    height: 100%;
-    width: 340px;
-    left: 800px;
-    top: 475px;
-    margin: 5px;
-    border-radius: 8px;
+  height: 100%;
+  width: 340px;
+  left: 800px;
+  top: 475px;
+  margin: 5px;
+  border-radius: 8px;
 
+  .card-info__content_title img {
+    margin-right: 12px;
+  }
 
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 24px;
-    line-height: 30px;
-    color: #6B6B6B;
-
-    background-color: #F5F5F8;
-	background-image: url( src\assets\icons\vehicle.svg );
-    background-repeat: no-repeat;
-    background-size: 0.8em auto;
-    background-position: 0.4em center;
-    padding: 0.2em 0.5em 0.2em 1.5em;
-}
-
-.lista-botoes button {
+  .lista-botoes button {
     width: 60px;
     height: 60px;
     margin: 5px;
     border-radius: 8px;
-    border-color: #6B6B6B;
+    border-color: #6b6b6b;
 
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 15px;
     line-height: 20px;
-    color: #6B6B6B;
-}
+    color: #6b6b6b;
+  }
 
-.lista-botoes button:focus {
+  .lista-botoes button:focus {
     top: 2px;
     left: 1px;
     box-shadow: none;
-    background-color: #34437A;
-    color: #FFFFFF;
+    background-color: #34437a;
+    color: #ffffff;
+  }
+
+  #function-close {
+    display: none;
+  }
+
+  input:checked + .checkbox-wrapper {
+    display: none;
+  }
 }
 
-#function-close {
-    display: none;
-}
+.btn-hour {
+  padding: 8px;
 
-input:checked+.checkbox-wrapper {
-    display: none;
+  & button {
+    background: linear-gradient(135deg, #34437a 26.04%, #8496d8 100%);
+    height: auto;
+    border-radius: 8px;
+    min-width: 75px;
+  }
 }

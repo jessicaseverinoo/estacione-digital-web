@@ -1,6 +1,7 @@
 import { Button, Checkbox, Col, Divider, Form, Input, Row, Image } from "antd";
 import Layout from "antd/lib/layout/layout";
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Login.scss";
 
 const Login: React.FC = () => {
@@ -57,9 +58,7 @@ const Login: React.FC = () => {
               </Form.Item>
 
               <Form.Item wrapperCol={{ span: 24 }}>
-                <Button type="primary" htmlType="submit">
-                  Entrar
-                </Button>
+                <Link to="/inicio">Entrar</Link>
               </Form.Item>
             </Form>
           </div>
