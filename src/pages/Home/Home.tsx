@@ -117,8 +117,12 @@ const Home: React.FC = () => {
       <Content className="main-content">
         <AvailableHours></AvailableHours>
         <Row justify="center" align="middle">
-          <Col>
-            <Button type="primary" onClick={showModal}>
+          <Col span={6}>
+            <Button
+              type="primary"
+              className="select-ticket"
+              onClick={showModal}
+            >
               Utilizar Tickets
             </Button>
           </Col>
@@ -228,7 +232,7 @@ const Home: React.FC = () => {
                 ))}
               </Row>
             </Col>
-            <Col span={12}>
+            <Col offset={2} span={10}>
               <h3>Selecione um veículo</h3>
               <div className="div-select">
                 <Select
