@@ -24,8 +24,10 @@ import AuthService from "../../services/AuthService";
 
 const ListVehicles: React.FC = () => {
   const [listVehicle, setlistVehicle] = useState([]);
-  
-  useEffect(() => {
+
+  useEffect(() => postVehicle(), []);
+
+  function postVehicle() {
     VehicleService.listVehicle(AuthService.getCurrentUser().uuidUsuario).then(
       (response) => {
         setlistVehicle(response);
@@ -40,7 +42,7 @@ const ListVehicles: React.FC = () => {
         console.log(resMessage);
       }
     );
-  }, []);
+  }
 
   const onFinish = (values: any) => {
     console.log("valores recebidos:", values);
@@ -53,6 +55,7 @@ const ListVehicles: React.FC = () => {
     ).then(
       (response) => {
         console.log("Success:", values);
+        postVehicle();
       },
       (error) => {
         const resMessage =
@@ -66,10 +69,8 @@ const ListVehicles: React.FC = () => {
     );
   };
 
-  
   const onChangeTipoVeiculo = (e: RadioChangeEvent) => {
-    console.log('radio checked', e.target.value);
-   
+    console.log("radio checked", e.target.value);
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -270,8 +271,11 @@ const ListVehicles: React.FC = () => {
                       },
                     ]}
                   >
-                    <Radio.Group defaultValue={"CARRO"} onChange={onChangeTipoVeiculo} > 
-                      <Radio.Button className="type-vehicle" value="CARRO" >
+                    <Radio.Group
+                      defaultValue={"CARRO"}
+                      onChange={onChangeTipoVeiculo}
+                    >
+                      <Radio.Button className="type-vehicle" value="CARRO">
                         <img
                           className="icon-radio-button"
                           src="/src/assets/icons/vehicle.svg"
