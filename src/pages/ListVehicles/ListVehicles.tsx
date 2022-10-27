@@ -46,6 +46,10 @@ const ListVehicles: React.FC = () => {
     );
   }
 
+  function deleteVehicle() {
+    VehicleService.deleteVehicle;
+  }
+
   const onFinish = (values: any) => {
     VehicleService.addVehicle(
       AuthService.getCurrentUser().uuidUsuario,
@@ -76,7 +80,14 @@ const ListVehicles: React.FC = () => {
     setFavoriteVehicle(checked);
   };
 
-  const handleDelete = (stid: any) => {};
+  const handleDelete = (uuidVehicle: any) => {
+    VehicleService.deleteVehicle(
+      AuthService.getCurrentUser().uuidUsuario,
+      uuidVehicle
+    ).then(() => {
+      postVehicle();
+    });
+  };
 
   interface IData {
     uuidVeiculo: string;

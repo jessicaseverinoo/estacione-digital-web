@@ -36,6 +36,12 @@ class VehicleService {
       return response;
     });
   }
+
+  deleteVehicle(uuidUsuario: string, uuidVeiculo: string) {
+    const URL_DELETE_VEHICLE = `/usuarios/${uuidUsuario}/veiculos/${uuidVeiculo}`;
+
+    return instance.delete(URL_DELETE_VEHICLE);
+  }
 }
 
 export default new VehicleService();
