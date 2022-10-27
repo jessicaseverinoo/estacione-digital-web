@@ -21,9 +21,12 @@ import "./ListVehicles.scss";
 import AvailableHours from "../../components/AvailableHours/AvailableHours";
 import VehicleService from "../../services/VehicleService";
 import AuthService from "../../services/AuthService";
+import { StarFilled } from "@ant-design/icons";
 
 const ListVehicles: React.FC = () => {
   const [listVehicle, setlistVehicle] = useState([]);
+  const [favoriteVehicle, setFavoriteVehicle] = useState(false);
+  const [modelVehicle, setModelVehicle] = useState("CARRO");
 
   useEffect(() => postVehicle(), []);
 
@@ -39,22 +42,19 @@ const ListVehicles: React.FC = () => {
             error.response.data.message) ||
           error.message ||
           error.toString();
-        console.log(resMessage);
       }
     );
   }
 
   const onFinish = (values: any) => {
-    console.log("valores recebidos:", values);
     VehicleService.addVehicle(
       AuthService.getCurrentUser().uuidUsuario,
       values.placa,
-      "CARRO",
+      modelVehicle,
       values.modelo,
-      false
+      favoriteVehicle
     ).then(
-      (response) => {
-        console.log("Success:", values);
+      (_) => {
         postVehicle();
       },
       (error) => {
@@ -64,32 +64,25 @@ const ListVehicles: React.FC = () => {
             error.response.data.message) ||
           error.message ||
           error.toString();
-        console.log(resMessage);
       }
     );
   };
 
   const onChangeTipoVeiculo = (e: RadioChangeEvent) => {
-    console.log("radio checked", e.target.value);
-  };
-
-  const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
+    setModelVehicle(e.target.value);
   };
 
   const onChangeFavorito = (checked: boolean) => {
-    console.log(`Switch to ${checked}`);
+    setFavoriteVehicle(checked);
   };
 
-  const handleDelete = (stid: any) => {
-    console.log(stid);
-  };
+  const handleDelete = (stid: any) => {};
 
   interface IData {
     uuidVeiculo: string;
     tipoVeiculo: string;
     placa: string;
-    favorito: string;
+    favorito: boolean;
   }
 
   function defineTypeImageVehicle(typeVehicle: string) {
@@ -138,18 +131,10 @@ const ListVehicles: React.FC = () => {
       dataIndex: "favorito",
       key: "favorito",
       render: (_, { favorito }) =>
-        favorito === "true" ? (
-          <img
-            className="icon-table"
-            src="/src/assets/icons/star.svg"
-            alt="Favorito"
-          />
+        favorito === true ? (
+          <StarFilled style={{ fontSize: "24px", color: "#f7ff12" }} />
         ) : (
-          <img
-            className="icon-table"
-            src="/src/assets/icons/star.svg"
-            alt="Favorito"
-          />
+          <StarFilled style={{ fontSize: "24px", color: "#505050" }} />
         ),
     },
     {
@@ -202,7 +187,6 @@ const ListVehicles: React.FC = () => {
                   wrapperCol={{ span: 24 }}
                   initialValues={{ remember: true }}
                   onFinish={onFinish}
-                  onFinishFailed={onFinishFailed}
                   autoComplete="off"
                 >
                   <Table
@@ -227,7 +211,6 @@ const ListVehicles: React.FC = () => {
                   wrapperCol={{ span: 24 }}
                   initialValues={{ remember: true }}
                   onFinish={onFinish}
-                  onFinishFailed={onFinishFailed}
                   autoComplete="off"
                 >
                   <Form.Item
