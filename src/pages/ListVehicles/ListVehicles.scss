@@ -1,1 +1,67 @@
-.listVehicles {}
+.listVehicles {
+  min-height: 100vh;
+  height: 100vh;
+}
+
+.main-content {
+  margin: 24px 16px;
+  padding: 24px;
+}
+
+.form-list-vehicle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.icon-table {
+  width: 30px;
+  height: 30px;
+}
+
+.icon-radio-button {
+  width: 30px;
+  height: 30px;
+}
+
+.form-list-vehicle table {
+  background: #f9f9f9;
+}
+
+.form-edit-vehicle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.button {
+  justify-content: center;
+  display: flex;
+}
+
+.type-vehicle {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  height: 80px !important;
+  width: 80px !important;
+  margin: 0;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  border: 1px solid #000000;
+  border-top-width: 1px;
+  border-left-width: 1px !important;
+
+  & + .type-vehicle {
+    margin-left: 12px;
+  }
+}
+
+.type-vehicle:not(:first-child)::before {
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.ant-radio-button-wrapper-checked:not([class*=" ant-radio-button-wrapper-disabled"]).ant-radio-button-wrapper {
+  background: #c2e2fc;
+}
