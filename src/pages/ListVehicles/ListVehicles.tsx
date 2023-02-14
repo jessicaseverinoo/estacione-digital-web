@@ -102,7 +102,7 @@ const ListVehicles: React.FC = () => {
         return (
           <img
             className="icon-table"
-            src="/src/assets/icons/vehicle.svg"
+            src="https://raw.githubusercontent.com/jessicaseverinoo/estacione-digital-web/e771ed6f310182dbdece0850ccf040090830c989/src/assets/icons/vehicle.svg"
             alt="Carro"
           />
         );
@@ -110,7 +110,7 @@ const ListVehicles: React.FC = () => {
         return (
           <img
             className="icon-table"
-            src="/src/assets/icons/truck.svg"
+            src="https://raw.githubusercontent.com/jessicaseverinoo/estacione-digital-web/e771ed6f310182dbdece0850ccf040090830c989/src/assets/icons/truck.svg"
             alt="Caminhão"
           />
         );
@@ -118,7 +118,7 @@ const ListVehicles: React.FC = () => {
         return (
           <img
             className="icon-table"
-            src="/src/assets/icons/buss.svg"
+            src="https://raw.githubusercontent.com/jessicaseverinoo/estacione-digital-web/e771ed6f310182dbdece0850ccf040090830c989/src/assets/icons/buss.svg"
             alt="Ônibus"
           />
         );
@@ -155,7 +155,7 @@ const ListVehicles: React.FC = () => {
         <Space size="middle">
           <img
             className="icon-table"
-            src="/src/assets/icons/edit.svg"
+            src="https://raw.githubusercontent.com/jessicaseverinoo/estacione-digital-web/e771ed6f310182dbdece0850ccf040090830c989/src/assets/icons/edit.svg"
             alt="Editar"
           />
           <Popconfirm
@@ -166,7 +166,7 @@ const ListVehicles: React.FC = () => {
           >
             <img
               className="icon-table"
-              src="/src/assets/icons/delete.svg"
+              src="https://raw.githubusercontent.com/jessicaseverinoo/estacione-digital-web/e771ed6f310182dbdece0850ccf040090830c989/src/assets/icons/delete.svg"
               alt="Deletar"
             />
           </Popconfirm>
@@ -272,21 +272,21 @@ const ListVehicles: React.FC = () => {
                       <Radio.Button className="type-vehicle" value="CARRO">
                         <img
                           className="icon-radio-button"
-                          src="/src/assets/icons/vehicle.svg"
+                          src="https://raw.githubusercontent.com/jessicaseverinoo/estacione-digital-web/e771ed6f310182dbdece0850ccf040090830c989/src/assets/icons/vehicle.svg"
                           alt="Carro"
                         />
                       </Radio.Button>
                       <Radio.Button className="type-vehicle" value="CAMINHAO">
                         <img
                           className="icon-radio-button"
-                          src="/src/assets/icons/truck.svg"
+                          src="https://raw.githubusercontent.com/jessicaseverinoo/estacione-digital-web/e771ed6f310182dbdece0850ccf040090830c989/src/assets/icons/truck.svg"
                           alt="Caminhão"
                         />
                       </Radio.Button>
                       <Radio.Button className="type-vehicle" value="ONIBUS">
                         <img
                           className="icon-radio-button"
-                          src="/src/assets/icons/buss.svg"
+                          src="https://raw.githubusercontent.com/jessicaseverinoo/estacione-digital-web/e771ed6f310182dbdece0850ccf040090830c989/src/assets/icons/buss.svg"
                           alt="Onibus"
                         />
                       </Radio.Button>
