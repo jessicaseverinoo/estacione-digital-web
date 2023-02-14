@@ -21,7 +21,7 @@ const Home: React.FC = () => {
                   <div className="card-hour-open__content-title">
                     <img
                       className="card-hour-open__icon"
-                      src="src\assets\icons\time.svg"
+                      src="https://raw.githubusercontent.com/jessicaseverinoo/estacione-digital-web/e771ed6f310182dbdece0850ccf040090830c989/src/assets/icons/time.svg"
                       alt="Icone Relógio"
                     />
                     <h2 className="card-hour-open__title">
@@ -30,7 +30,7 @@ const Home: React.FC = () => {
                   </div>
                   <img
                     className="card-hour-open__icon"
-                    src="src\assets\icons\pin.svg"
+                    src="https://raw.githubusercontent.com/jessicaseverinoo/estacione-digital-web/e771ed6f310182dbdece0850ccf040090830c989/src/assets/icons/pin.svg"
                     alt="Icone Fixar"
                   />
                 </div>
@@ -47,14 +47,14 @@ const Home: React.FC = () => {
                   <div className="card-info__content_title">
                     <img
                       className="card-info__icon-attention"
-                      src="src\assets\icons\warning.svg"
+                      src="https://raw.githubusercontent.com/jessicaseverinoo/estacione-digital-web/e771ed6f310182dbdece0850ccf040090830c989/src/assets/icons/warning.svg"
                       alt="Icone Atenção"
                     />
                     <h3 className="card-info__title">Fique atento</h3>
                   </div>
                   <img
                     className="card-info__icon-close"
-                    src="src\assets\icons\close.svg"
+                    src="https://raw.githubusercontent.com/jessicaseverinoo/estacione-digital-web/e771ed6f310182dbdece0850ccf040090830c989/src/assets/icons/close.svg"
                     alt="Icone Fechar"
                   />
                 </div>
@@ -77,7 +77,7 @@ const Home: React.FC = () => {
             <div className="card-time">
               <img
                 className="card-periodo-image"
-                src="src\assets\icons\hourglass.svg"
+                src="https://raw.githubusercontent.com/jessicaseverinoo/estacione-digital-web/e771ed6f310182dbdece0850ccf040090830c989/src/assets/icons/hourglass.svg"
                 alt="Icone Ampulheta"
               />
               <Divider type="vertical" />
