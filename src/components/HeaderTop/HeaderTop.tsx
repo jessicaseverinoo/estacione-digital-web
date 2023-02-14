@@ -83,7 +83,7 @@ const HeaderTop: React.FC = () => {
         </Col>
         <Col>
           <Row align="middle">
-            <p className="wellcome-user">Olá, Jessica</p>
+            <p className="wellcome-user">Seja bem vindo(a)</p>
             <Avatar shape="square" size="large" icon={<UserOutlined />} />
           </Row>
         </Col>
