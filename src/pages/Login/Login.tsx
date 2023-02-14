@@ -90,7 +90,7 @@ const Login: React.FC = () => {
         <Col span={7}>
           <img
             width="100%"
-            src="src/assets/images/logo.jpg"
+            src="https://raw.githubusercontent.com/jessicaseverinoo/estacione-digital-web/integration-project/src/assets/images/logo.jpg"
             alt="Estacione Digital"
           />
         </Col>
